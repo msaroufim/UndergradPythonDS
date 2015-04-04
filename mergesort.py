@@ -1,5 +1,15 @@
 class MergeSort(object):
-    def merge(self,left, right):
+
+    def _merge(self,left, right):
+    	"""
+		Takes two sorted arrays left and right and merges them
+		
+		Not to be called externally
+
+		Required arguments:
+			left
+			right
+    	"""
         nl = len(left)
         nr = len(right)
         result = [0]*(nl+nr)
@@ -22,12 +32,16 @@ class MergeSort(object):
         return result
 
     def sort(self,arr):
+    	"""
+		sort step that recursively splits array into 
+		two parts and then sorts them
+    	"""
         n = len(arr)
         if n<=1:
             return arr 
         left = self.sort(arr[:n/2])
         right = self.sort(arr[n/2:] )
-        return self.merge(left, right)
+        return self._merge(left, right)
 
 
 #Test it out
