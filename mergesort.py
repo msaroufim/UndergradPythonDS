@@ -2,7 +2,7 @@ class MergeSort(object):
 
     def _merge(self,left, right):
     	"""
-		Takes two sorted arrays left and right and merges them
+		Takes two sorted alistays left and right and merges them
 		
 		Not to be called externally
 
@@ -31,16 +31,20 @@ class MergeSort(object):
                 i+=1
         return result
 
-    def sort(self,arr):
+    def sort(self,alist):
     	"""
-		sort step that recursively splits array into 
+		sort step that recursively splits alistay into 
 		two parts and then sorts them
+
+		:type alist: list
+		:param alist: List to sort
+		:returns: list -- Sorted list
     	"""
-        n = len(arr)
+        n = len(alist)
         if n<=1:
-            return arr 
-        left = self.sort(arr[:n/2])
-        right = self.sort(arr[n/2:] )
+            return alist 
+        left = self.sort(alist[:n/2])
+        right = self.sort(alist[n/2:] )
         return self._merge(left, right)
 
 
