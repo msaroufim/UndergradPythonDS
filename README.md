@@ -5,6 +5,37 @@ important undergrad algorithms in Python. I'm using [Problem Solving with Algori
 
 So far I have:
 
+## The Basics
+
+* Stacks (nothing too surprising)
+```python
+aStack = Stack()
+aStack.push(5)
+aStack.pop()
+```
+* Queues, more of the same
+* Deques, do you really need me to implement those too?
+* Min-heap: the code is much more easily understood if you take into account that a complete tree can be represented by a list where for an element at position ```i``` its children are at position ```2i``` and ```2i + 1```. Imagine spreading out all the elements of a tree Breadth First.
+ 
+
+I should point out this [SO](http://stackoverflow.com/questions/9755721/build-heap-complexity) link. Textbooks generally state that building a heap is ```O(n log n)``` time which is correct if you are inserting the elements in a heap one by one. BUT if you just put all the elements in, in an arbitrary order and heapify then you can bring that cost down to ```O(N)```
+
+```python
+def buildHeap(self,alist):
+        i = len(alist) // 2 #nodes in alist[:i] are all leaves
+        self.currentSize = len(alist)
+        self.heapList = [0] + alist[:] #[0] at beginning helps arithmetic work
+        while (i > 0):
+            #every element will be pushed to the correct location after percdown
+            self.percDown(i) 
+            #do this for all non-leaf elements
+            i = i - 1
+
+myHeap = BinHeap()
+a = [1,4,11,2,3,6,0]
+myHeap.buildHeap(a)
+```
+
 ## Sorting
 
 * MergeSort
@@ -42,11 +73,3 @@ def _postOrder(self):
             yield self.key
 ```
 
-* Stacks (nothing too surprising)
-```python
-aStack = Stack()
-aStack.push(5)
-aStack.pop()
-```
-* Queues, more of the same
-* Deques, do you really need me to implement those too?
