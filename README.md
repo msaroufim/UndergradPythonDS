@@ -90,3 +90,18 @@ def _postOrder(self):
             yield self.key
 ```
 
+## Graph Algorithms
+
+* Depth First Search
+
+```python
+currentVert = vertQueue.dequeue()
+        for nbr in currentVert.getConnections():
+            if (nbr.getColor == 'white'):
+                nbr.setColor('gray')
+                nbr.setDistance(currentVert.getDistance() + 1)
+                nbr.setPred(currentVert)
+                vertQueue.enqueue(nbr)
+```
+
+* Replace the Queue by a stack
