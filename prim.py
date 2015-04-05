@@ -1,6 +1,7 @@
 import Heap
 import Graph
 import Vertex
+import sys
 
 def prim(G,start):
 	pq = Heap()
