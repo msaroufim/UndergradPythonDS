@@ -184,15 +184,38 @@ class TreeNode:
 			current = current.leftChild
 		return current
 
-
+	#in order traversal is default
 	def __iter__(self):
 		if self:
 			if self.hasLeftChild:
-				yield elem
+				for elem in self.leftChild:
+					yield elem
 			yield self.key
 			if self.hasRightChild():
 				for elem in self.rightChild:
 					yield elem
+	
+	#preorder traversal not exposed but possible to reimplement __iter__ here 
+	def _preOrder(self):
+		if self:
+			yield self.key
+			if self.hasLeftChild:
+				for elem in self.leftChild:
+					yield elem
+			if self.hasRightChild():
+				for elem in self.rightChild:
+					yield elem
+
+	def _postOrder(self):
+		if self:
+			if self.hasLeftChild:
+				for elem in self.leftChild:
+					yield elem
+			if self.hasRightChild:
+				for elem in self.rightChild:
+					yield elem
+			yield self.key
+
 
 	def spliceOut(self):
 		#to implement

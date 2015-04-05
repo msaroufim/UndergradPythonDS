@@ -14,5 +14,30 @@ So far I have:
 
 ## Trees
 
-* Binary Search Tree
-    - TreeNode Class
+* Binary Search Tree with a really simple API:
+
+```python
+aTree = BinarySearchTree()
+    aTree[1] = "python"
+    aTree[3] = "datastructures"
+    aTree[6] = "are dope"
+
+    aTree[1] = aTree[3]
+    del aTree[3]
+    for keys,vals in aTree:
+        print("Key: %i Value: %s %(keys,vals)")
+```
+
+All Three different tree traversal algorithms, don't ever let this stuff confuse you again. Rename ```_postorder``` to ```__iter__```` to change the default in order tree traversal when you iterate over the tree
+ 
+```python
+def _postOrder(self):
+        if self:
+            if self.hasLeftChild:
+                for elem in self.leftChild:
+                    yield elem
+            if self.hasRightChild:
+                for elem in self.rightChild:
+                    yield elem
+            yield self.key
+```
