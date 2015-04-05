@@ -12,8 +12,9 @@ So far I have:
 aStack = Stack()
 aStack.push(5)
 aStack.pop()
+assert(aStack.isEmpty() == true)
 ```
-* Queues, more of the same
+* Queues, more of the same...
 * Deques, do you really need me to implement those too?
 * Min-heap: the code is much more easily understood if you take into account that a complete tree can be represented by a list where for an element at position ```i``` its children are at position ```2i``` and ```2i + 1```. Imagine spreading out all the elements of a tree Breadth First.
  
@@ -38,10 +39,27 @@ myHeap.buildHeap(a)
 
 ## Sorting
 
-* MergeSort
+* MergeSort: Classic divide and conquer, merge can be performed in place without an extra list if one is so inclined.
 * QuickSort 
-    - Elegant but inefficient filter based solution
-    - Efficient in memory solution (in progress, needs a fix)
+    - Elegant but inefficient filter based solution O(N!) 
+```python
+pivots  = [x for x in alist if x == alist[0]]
+        lesser  = self.filterQuickSort([x for x in alist if x < alist[0]])
+        greater = self.filterQuickSort([x for x in alist if x > alist[0]])
+        return lesser + pivots + greater
+```
+
+    - Efficient in memory solution that works by swapping elements with the pivot appropriately to avoid creating two news lists.  (in progress, needs a fix)
+```python
+def _partition(alist,begin,end):
+            pivot = begin
+            for i in range(begin + 1 , end + 1):
+                if alist[i] <= alist[begin]:
+                    pivot += 1
+                    alist[i],alist[pivot] = alist[pivot], alist[i]
+            alist[pivot],alist[begin] = alist[begin],alist[pivot]
+            return pivot
+```
 
 ## Dynamic Programming
 * Smallest amount of change problem: Suppose you had 1, 5, 10, and 25 cent coins what's the smallest number of coins you'd need to give me 63 cents in change. The greedy solution is optimal for the 1,5,10,25 values, if you add a 21 cent coin then the greedy solution will fail. So greedy won't work for a general case solution so we have 3 methods sorted in increasing awesomeness.
@@ -50,7 +68,7 @@ myHeap.buildHeap(a)
 #will need to use bigger lists to see effect irl
 GetChangeInstance = GetChange()
 
-#u slow m8
+    #u slow m8
     print(GetChangeInstance.recMC([1,5,10,25,21],63))
     
     #better
@@ -92,9 +110,18 @@ def _postOrder(self):
 
 ## Graph Algorithms
 
-* Graph Data Structure
+* Graph Data Structure in Adjacency List format with a simple API
+```python
+MyGraph = Graph()
+MyGraph.addEdge(vertex1 = 5,vertex 2 3, weight = 10)
+MyVertex = Vertex(5)
+assert(Vertex(5) in myGraph == true)
 
-* Depth First Search
+```
+
+### Graph Search Algorithms 
+
+* Breadth First Search: below is the basic idea behind how breadth first search is implemented using queue.
 
 ```python
 currentVert = vertQueue.dequeue()
@@ -106,5 +133,5 @@ currentVert = vertQueue.dequeue()
                 vertQueue.enqueue(nbr)
 ```
 
-* Replace the Queue by a stack!
+* Replace the Queue by a stack! Do it!
 
