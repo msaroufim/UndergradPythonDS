@@ -42,4 +42,11 @@ def _postOrder(self):
             yield self.key
 ```
 
-* Stacks and Queues are really simple to implement since Python lists support insertions and deletions
+* Stacks (nothing too surprising)
+```python
+aStack = Stack()
+aStack.push(5)
+aStack.pop()
+```
+* Queues, more of the same
+* Deques, do you really need me to implement those too?
