@@ -54,3 +54,9 @@ class Graph:
 
 if __name__ == "__main__":
 	g = Graph()
+	for vert in range(60):
+		g.addVertex(vert)
+
+	for v in v.getConnections():
+		for w in v.getConnections():
+			print("(%s,%s)" % (v.getId(), w.getId()))
