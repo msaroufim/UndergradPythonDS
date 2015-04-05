@@ -41,7 +41,7 @@ myHeap.buildHeap(a)
 
 * MergeSort: Classic divide and conquer, merge can be performed in place without an extra list if one is so inclined.
 * QuickSort 
-    - Elegant but inefficient filter based solution O(N!) 
+Elegant but inefficient filter based solution O(N!) 
 ```python
 pivots  = [x for x in alist if x == alist[0]]
         lesser  = self.filterQuickSort([x for x in alist if x < alist[0]])
@@ -49,7 +49,7 @@ pivots  = [x for x in alist if x == alist[0]]
         return lesser + pivots + greater
 ```
 
-    - Efficient in memory solution that works by swapping elements with the pivot appropriately to avoid creating two news lists.  (in progress, needs a fix)
+Efficient in memory solution that works by swapping elements with the pivot appropriately to avoid creating two news lists.  (in progress, needs a fix)
 ```python
 def _partition(alist,begin,end):
             pivot = begin
