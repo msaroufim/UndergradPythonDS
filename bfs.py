@@ -5,6 +5,9 @@ import Queue
 
 class GraphSearch(Graph):
 
+	def dijkstra(g,start,s):
+		pass
+
 	def bfs(g,start):
 		start.setDistance(0)
 		start.setPred(None)

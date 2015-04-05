@@ -135,7 +135,13 @@ currentVert = vertQueue.dequeue()
 
 * Replace the Queue by a stack! Do it!
 
-### Cause why not
+### Spanning Tree
+* Prim's Algorithm
+
+
+## Cause why not
+
+### Implementing a basic arithmetic language
 
 * Implementing basic arithmetic in case people expect you to know the basics behind how a compiler works
 
