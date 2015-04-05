@@ -185,6 +185,15 @@ class TreeNode:
 		return current
 
 
+	def __iter__(self):
+		if self:
+			if self.hasLeftChild:
+				yield elem
+			yield self.key
+			if self.hasRightChild():
+				for elem in self.rightChild:
+					yield elem
+
 	def spliceOut(self):
 		#to implement
 		pass
