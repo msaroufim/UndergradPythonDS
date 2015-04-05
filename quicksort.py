@@ -23,6 +23,8 @@ class QuickSort(object):
 		Optimal in space O(N)
 		O(N log N) in average case
 		""" 
+		
+
 		def _partition(alist,begin,end):
 			#Can also pick random pivot
 			#import random
@@ -35,14 +37,18 @@ class QuickSort(object):
 			alist[pivot],alist[begin] = alist[begin],alist[pivot]
 			return pivot
 		
-		def _quicksort(alistay,begin = 0, end = None):
+		def _quicksort(alist,begin = 0, end = None):
 			if end is None:
-				end = len(alistay) - 1
+				end = len(alist) - 1
 			if begin >= end:
 				return
-			pivot = partition(alist,begin,end)
+			pivot = _partition(alist,begin,end)
 			_quicksort(alist,begin,pivot - 1)
 			_quicksort(alist,pivot + 1, end)
+
+		_quicksort(alist)
+		return alist
+
 
 
 #Test it out
@@ -58,9 +64,14 @@ def main():
     result = QuickSortInstance.filterQuickSort(a)
     t1 = time.time()
     total_time = t1 - t0
-   
-    #result of 
-    print result
+
+    b = range(20)
+    random.shuffle(b)
+    t0 = time.time()
+    result2 = QuickSortInstance.inPlaceImperativeQuickSort(b)
+    t1 = time.time()
+    total_time_2 = t1 - t0
+    print result2
     print("Amount of time taken is",total_time)
 
 

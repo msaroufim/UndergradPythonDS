@@ -26,7 +26,7 @@ class BinarySearchTree:
 			if currentNode.hasLeftChild():
 				self._put(key,val,currentNode.leftChild)
 			else:
-				currentNode.LeftChild = TreeNode(key,val,parent=currentNode)
+				currentNode.leftChild = TreeNode(key,val,parent=currentNode)
 		elif key > currentNode.key:
 			if currentNode.hasRightChild():
 				self._put(key,val,currentNode.rightChild)
@@ -72,13 +72,75 @@ class BinarySearchTree:
 		else:
 			return False
 
+	def delete(self,key):
+		if self.size > 1:
+			nodeToRemove = self._get(key,self.root)
+			if nodeToRemove:
+				self.remove(nodeToRemove)
+				self.size = self.size - 1
+			else:
+				raise KeyError("Error, key not in tree")
+		elif self.size == 1 and self.root.key == key:
+			self.root = None
+			self.size = self.size - 1
+		else:
+			raise KeyError("Error, key not in tree")
+	
+	#so you can delte by saying del TreeName[keyOfElementToDelete]
+	def __delitem__(self,key):
+		self.delete(key)
+
+	def remove(self):
+		if currentNode.isLeaf(): #leaf is the easiest
+			if currentNode == currentNode.parent.leftChild:
+				currentNode.parent.leftChild = None
+			else:
+				currentNode.parent.rightChild = None
+
+
+		elif currentNode.hasBothChildren(): #interior node
+			succ = currentNode.findSuccessor()
+			succ.spliceOut()
+			currentNode.key = succ.key
+			currentNode.value = succ.value
+
+
+
+		else: #node has just one child, promotion is easy
+			if currentNode.hasLeftChild():
+				if currentNode.isLeftChild():
+					currentNode.leftChild.parent  = currentNode.parent
+					currentNode.parent.leftChild  = currentNode.leftChild
+				elif currentNode.isRightChild():
+					currentNode.leftChild.parent  = currentNode.parent
+					currentNode.parent.rightChild = currentNode.leftChild
+				else:
+					#if root is deleted the left node becomes the new root
+					currentNode.replaceNodeData(currentNode.leftChild.key,
+						currentNode.leftChild.value,currentNode.leftChild.leftChild
+						currentNode.leftChild.rightChild)  
+			else:
+				if currentNode.isLeftChild():
+					currentNode.rightChild.parent = currentNode.parent
+					currentNode.parent.leftChild =  currentNode.rightChild
+				elif currentNode.isRightChild():
+					currentNode.rightChild.parent = currentNode.parent
+					currentNode.parent.rightChild = currentNode.rightChild
+				else:
+					currentNode.replaceNodeData(currentNode.rightChild.key,
+						currentNode.rightChild.value,
+						currentNode.rightChild.leftChild,
+						currentNode.rightChild.rightChild)
+
+
+
 class TreeNode:
 	def __init__(self,key,val,left = None,right = None,parent = None):
-		self.key       = key
-		self.value     = val
-		self.leftChild = left
-		self.righChild = right
-		self.parent    = parent
+		self.key        = key
+		self.value      = val
+		self.leftChild  = left
+		self.rightChild = right
+		self.parent     = parent
 
 	def hasLeftChild(self):
 		return self.leftChild
@@ -108,12 +170,50 @@ class TreeNode:
 		self.key        = key 
 		self.value      = value
 		self.leftChild  = leftChild
-		self.rightChild = righChild
+		self.rightChild = rightChild
 
 		if self.hasLeftChild():
 			self.leftChild.parent = self
 
 		if self.hasRightChild():
-			self.righChild.parent = self 
+			self.rightChild.parent = self 
 
+	def findMin(self):
+		current = self
+		while current.hasLeftChild():
+			current = current.leftChild
+		return current
+
+
+	def spliceOut(self):
+		#to implement
+		pass
+
+	def findSuccessor(self):
+		succ = None
+		if self.hasRightChild:
+			succ = self.rightChild.findMin()
+		else:
+			if self.parent:
+				if self.isLeftChild():
+					succ = self.parent
+				else:
+					#find succesor of parent ignoring current node
+					self.parent.rightChild = None
+					succ = self.parent.findSuccessor()
+					self.parent.rightChild = self
+
+
+if __name__ == "__main__":
+	#testing it out
+	print "This ain't your grandma's BST"
+	aTree = BinarySearchTree()
+	aTree[1] = "python"
+	aTree[3] = "datastructures"
+	aTree[6] = "are dope"
+
+	aTree[1] = aTree[3]
+	del aTree[3]
+	for keys,vals in aTree:
+		print("Key: %i Value: %s %(keys,vals)")
 
