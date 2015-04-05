@@ -28,8 +28,8 @@ aTree = BinarySearchTree()
         print("Key: %i Value: %s %(keys,vals)")
 ```
 
-All Three different tree traversal algorithms, don't ever let this stuff confuse you again. Rename ```_postorder``` to ```__iter__```` to change the default in order tree traversal when you iterate over the tree
- 
+All Three different tree traversal algorithms, don't ever let this stuff confuse you again! Rename ```__iter__``` to ```_inorder``` and rename ```_postorder``` to ```__iter__``` to change the default inorder tree traversal when you iterate over the tree
+
 ```python
 def _postOrder(self):
         if self:
