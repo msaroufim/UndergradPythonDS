@@ -14,7 +14,7 @@ So far I have:
 
 ## Trees
 
-* Binary Search Tree with a really simple API:
+* Binary Search Tree with a gloriously simple API:
 
 ```python
 aTree = BinarySearchTree()
@@ -41,3 +41,5 @@ def _postOrder(self):
                     yield elem
             yield self.key
 ```
+
+* Stacks and Queues are really simple to implement since Python lists support insertions and deletions

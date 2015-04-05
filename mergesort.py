@@ -1,4 +1,4 @@
-class MergeSort(object):
+class MergeSort:
 
     def _merge(self,left, right):
     	"""
