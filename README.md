@@ -92,6 +92,8 @@ def _postOrder(self):
 
 ## Graph Algorithms
 
+* Graph Data Structure
+
 * Depth First Search
 
 ```python
@@ -104,4 +106,5 @@ currentVert = vertQueue.dequeue()
                 vertQueue.enqueue(nbr)
 ```
 
-* Replace the Queue by a stack
+* Replace the Queue by a stack!
+
