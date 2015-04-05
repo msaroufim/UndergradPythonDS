@@ -1,7 +1,7 @@
 # Python Undergrad DataStructures and Algo Implementations
 
 Since people seem to care about this stuff, I've added implementations of
-important undergrad algorithms in Python. I'm using [Problem Solving with Algorithms and Data Structures as a guide](http://interactivepython.org/runestone/static/pythonds/index.html) Open an issue if you'd like me to implement a specific one.
+important undergrad algorithms in Python. I'm using [Problem Solving with Algorithms and Data Structures as a guide](http://interactivepython.org/runestone/static/pythonds/index.html). Open an issue if you'd like me to implement a specific one.
 
 So far I have:
 
@@ -42,6 +42,23 @@ myHeap.buildHeap(a)
 * QuickSort 
     - Elegant but inefficient filter based solution
     - Efficient in memory solution (in progress, needs a fix)
+
+## Dynamic Programming
+* Smallest amount of change problem: Suppose you had 1, 5, 10, and 25 cent coins what's the smallest number of coins you'd need to give me 63 cents in change. The greedy solution is optimal for the 1,5,10,25 values, if you add a 21 cent coin then the greedy solution will fail. So greedy won't work for a general case solution so we have 3 methods sorted in increasing awesomeness.
+
+```python
+#will need to use bigger lists to see effect irl
+GetChangeInstance = GetChange()
+
+#u slow m8
+    print(GetChangeInstance.recMC([1,5,10,25,21],63))
+    
+    #better
+    print(GetChangeInstance.recMCMemoized([1,5,10,25,21],63))
+
+    #duuuude
+    print(GetChangeInstance.DPMC([1,5,10,25,21],63))
+```
 
 ## Trees
 
