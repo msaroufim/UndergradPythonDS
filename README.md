@@ -135,3 +135,14 @@ currentVert = vertQueue.dequeue()
 
 * Replace the Queue by a stack! Do it!
 
+### Cause why not
+
+* Implementing basic arithmetic in case people expect you to know the basics behind how a compiler works
+
+```python
+pt = buildParseTree("( ( 10 + 5 ) * 3 )")
+assert(evaluate(pt) == 45)
+```
+
+
+[Eval~Apply](http://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871)

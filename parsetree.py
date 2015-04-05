@@ -34,5 +34,16 @@ def buildParseTree(fpexp):
 			raise ValueError
 	return eTree
 
+def evaluate(parseTree):
+	opers = {'+':operator.add,'-':operator.sub,'*':operator.mul, '/':operator.truediv}
+
+	leftC  = parseTree.getLeftChild()
+	RightC = parseTree.getRightChild()
+
+	if leftC and rightC:
+		fn = opers[parseTree.getRootVal()]
+		return fn(evaluate(leftC),evaluate(rightC))
+
 if __name__ == "__main__":
 	pt = buildParseTree("( ( 10 + 5 ) * 3 )")
+	assert(evaluate(pt) == 45)
