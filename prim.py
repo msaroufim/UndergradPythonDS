@@ -1,10 +1,10 @@
-import Heap
+import PriorityQueue
 import Graph
 import Vertex
 import sys
 
 def prim(G,start):
-	pq = Heap()
+	pq = PriorityQueue()
 
 	#initialize values
 	for v in G:

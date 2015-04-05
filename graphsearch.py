@@ -2,17 +2,21 @@ import Graph
 import Vertex
 import Queue
 import PriorityQueue
+import sys
 
 class GraphSearch(Graph):
 
 	def dijkstra(graph,start):
 		pq = PriorityQueue()
+		for v in G:
+			v.setDistance(sys.maxsize)
+			v.setPred(None) 
 		start.setDistance(0)
 		pq.buildHeap([(v.getDistance(),v) for v in graph])
 		while not pq.isEmpty():
 			currentVert = pq.delMin()
 			for nextVert in currentVert.getConnections():
-				newDist = currentVert.getDistance() + currentVert.getWeight(nextVert)
+				newDist = currentVert.getWeight(nextVert) + currentVert.getDistance()
 
 				if newDist < nextVert.getDistance():
 					nextVert.setDistance(newDist)

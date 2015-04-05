@@ -133,10 +133,36 @@ currentVert = vertQueue.dequeue()
                 vertQueue.enqueue(nbr)
 ```
 
-* Replace the Queue by a stack! Do it!
+>*Replace the Queue by a stack! Do it! 
+You get Depth First Search, big thanks to Adam Nemecek for this nice tidbit.
 
 ### Spanning Tree
-* Prim's Algorithm
+* Prim's Algorithm: Did you know that Prim and Dijkstra are the same algorithm? They only differ in 1 line in the implementation
+
+```
+def prim(G,start):
+    pq = PriorityQueue()
+
+    #initialize values
+    for v in G:
+        v.setDistance(sys.maxsize)
+        v.setPred(None) 
+    start.setDistance(0)
+    pq.buildHeap([(v.getDistance(),v) for v in G])
+    while not pq.isEmpty(): 
+        currentVert = pq.delMin()
+        for nextVert in currentVert.getConnections():
+            newCost = currentVert.getWeight(nextVert) + currentVert.getDistance()
+            
+            #in dijkstra the below line would be
+            #if newCost < nextVert.getDistance():
+            if nextVert in pq and newCost < nextVert.getDistance():
+                nextVert.setPred(currentVert)
+                nextVert.setDistance(newCost)
+                pq.decreaseKey(nextVert,newCost)
+```
+
+Consult [SO](http://stackoverflow.com/questions/9255620/why-does-dijkstras-algorithm-use-decrease-key) for info on why I use decrease-key here.
 
 
 ## Cause why not
