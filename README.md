@@ -137,9 +137,9 @@ currentVert = vertQueue.dequeue()
 You get Depth First Search, big thanks to Adam Nemecek for this nice tidbit.
 
 ### Spanning Tree
-* Prim's Algorithm: Did you know that Prim and Dijkstra are the same algorithm? They only differ in 1 line in the implementation
+* Prim's Algorithm: Did you know that Prim and Dijkstra differ in only one line in their implementation?
 
-```
+```python
 def prim(G,start):
     pq = PriorityQueue()
 
