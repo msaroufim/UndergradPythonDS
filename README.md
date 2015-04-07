@@ -68,14 +68,14 @@ def _partition(alist,begin,end):
 #will need to use bigger lists to see effect irl
 GetChangeInstance = GetChange()
 
-    #u slow m8
-    print(GetChangeInstance.recMC([1,5,10,25,21],63))
-    
-    #better
-    print(GetChangeInstance.recMCMemoized([1,5,10,25,21],63))
+#u slow m8
+print(GetChangeInstance.recMC([1,5,10,25,21],63))
 
-    #duuuude
-    print(GetChangeInstance.DPMC([1,5,10,25,21],63))
+#better
+print(GetChangeInstance.recMCMemoized([1,5,10,25,21],63))
+
+#duuuude
+print(GetChangeInstance.DPMC([1,5,10,25,21],63))
 ```
 
 ## Trees
@@ -176,5 +176,24 @@ pt = buildParseTree("( ( 10 + 5 ) * 3 )")
 assert(evaluate(pt) == 45)
 ```
 
-
 [Eval~Apply](http://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871)
+
+
+## Good to Know Stuff
+
+* [How Slicing Works](http://stackoverflow.com/questions/4486382/slice-operator-understanding)
+```python
+a = [1,2,3,4]
+>>> a[0:2] # take items 0-2, upper bound noninclusive
+[1, 2]
+>>> a[0:-1] #take all but the last
+[1, 2, 3]
+>>> a[1:4]
+[2, 3, 4]
+>>> a[::-1] # reverse the list
+[4, 3, 2, 1]
+>>> a[::2] # skip 2
+[1, 3]
+```
+
+* [itertools](http://pymotw.com/2/itertools/)
