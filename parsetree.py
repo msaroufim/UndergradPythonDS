@@ -3,7 +3,7 @@ import BinaryTree
 
 def buildParseTree(fpexp):
 	fplist = fpexp.split()
-	pStack = Stack
+	pStack = Stack()
 	eTree  = BinaryTree('')
 	pStack.push(eTree)
 	currentTree = eTree
