@@ -26,9 +26,6 @@ class QuickSort:
 		
 
 		def _partition(alist,begin,end):
-			#Can also pick random pivot
-			#import random
-			#pivot = random.choice(alist)
 			pivot = begin
 			for i in range(begin + 1 , end + 1):
 				if alist[i] <= alist[begin]:
