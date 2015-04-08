@@ -3,6 +3,7 @@
 Since people seem to care about this stuff, I've added implementations of
 important undergrad algorithms in Python. I'm using [Problem Solving with Algorithms and Data Structures as a guide](http://interactivepython.org/runestone/static/pythonds/index.html). Open an issue if you'd like me to implement a specific one.
 
+*Please use this for what it is: a study guide. Code has not been extensively. *
 So far I have:
 
 ## The Basics
