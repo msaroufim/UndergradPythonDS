@@ -80,6 +80,39 @@ print(GetChangeInstance.recMCMemoized([1,5,10,25,21],63))
 print(GetChangeInstance.DPMC([1,5,10,25,21],63))
 ```
 
+Note: You can create class to help make all functions memoisable following[this SO link](http://stackoverflow.com/questions/1988804/what-is-memoization-and-how-can-i-use-it-in-python)
+
+```python
+#first approach using decorators
+@memoise
+def yourFunction(arg1,arg2):
+    #some code
+
+#Second approach (Python 3 only)
+import functools
+
+@functools.lru_cache(maxsize=None) #last 128 by default
+def fib(num):
+    # ...
+
+#From scratch
+class Memoize:
+    def __init__(self, f):
+        self.f = f
+        self.memo = {}
+    def __call__(self, *args):
+        if not args in self.memo:
+            self.memo[args] = self.f(*args)
+        return self.memo[args]
+
+def yourFunction(arg1,arg2):
+    #somestuff
+
+yourFunction = Memoize(yourFunction(arg1,arg2))
+
+```
+
+
 ## Trees
 
 * Binary Search Tree with a gloriously simple API:
